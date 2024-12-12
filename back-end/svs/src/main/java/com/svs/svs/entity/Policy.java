@@ -9,23 +9,26 @@ public class Policy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "title")
     private String title;
 
-    @Column
+    @Column(name = "description", length = 2048)
     private String description;
 
-    @Column
+    @Column(name = "owner")
     private String owner;
 
-    @Column
+    @Column(name = "date")
     private String date;
 
-    @Column
+    @Column(name = "category")
     private String category;
 
-    @Column
+    @Column(name = "votes")
     private int votes;
+
+    public Policy() {
+    }
 
     public Policy(String title, String description, String owner, String date, String category, int votes) {
         this.title = title;

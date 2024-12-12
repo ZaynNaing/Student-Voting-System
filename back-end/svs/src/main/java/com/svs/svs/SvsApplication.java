@@ -6,16 +6,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.svs.svs.entity.Policy;
-import com.svs.svs.repository.PolicyRepository;
-import com.svs.svs.repository.UserRepository;
-import com.svs.svs.repository.VoteRepository;
 import com.svs.svs.service.PolicyService;
 
 @SpringBootApplication
 public class SvsApplication implements CommandLineRunner {
-
-	@Autowired
-	private PolicyRepository policyRepository;
 
 	@Autowired
 	private PolicyService policyService;
@@ -24,6 +18,7 @@ public class SvsApplication implements CommandLineRunner {
 		SpringApplication.run(SvsApplication.class, args);
 	}
 
+	@Override
 	public void run(String[] args) {
 
 		Policy p1 = new Policy("International Study Programs",
