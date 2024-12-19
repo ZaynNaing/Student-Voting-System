@@ -1,0 +1,15 @@
+services:
+  mysql:
+    container_name: 'sb-mysql'
+    image: 'mysql/mysql-server:8.0'
+    environment:
+      - 'MYSQL_DATABASE=sb-mysql'
+      - 'MYSQL_PASSWORD=sb-mysql'
+      - 'MYSQL_ROOT_PASSWORD=sb-mysql'
+      - 'MYSQL_USER=sb-mysql'
+    ports:
+      - '3306:3306'
+    volumes:
+      - sb-mysql-volume:/var/lib/mysql
+volumes:
+  sb-mysql-volume:
