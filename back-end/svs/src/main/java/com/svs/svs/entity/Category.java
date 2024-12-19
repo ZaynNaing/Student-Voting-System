@@ -35,4 +35,12 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Policy getPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(Policy policy) {
+        this.policy = policy;
+    }
 }
