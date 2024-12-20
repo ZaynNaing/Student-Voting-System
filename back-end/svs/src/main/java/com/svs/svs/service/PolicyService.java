@@ -4,6 +4,7 @@ import com.svs.svs.dto.*;
 import com.svs.svs.entity.Category;
 import com.svs.svs.entity.Policy;
 import com.svs.svs.entity.User;
+import com.svs.svs.entity.Vote;
 import com.svs.svs.exception.Exception404;
 import com.svs.svs.repository.CategoryRepository;
 import com.svs.svs.repository.PolicyRepository;
@@ -11,6 +12,7 @@ import com.svs.svs.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +29,32 @@ public class PolicyService {
     }
 
     public List<PolicyResponseDto> getAllPolicies() {
-        return null;
+        final List<PolicyResponseDto> responseDtoList = new ArrayList<>();
+
+        final List<Policy> policies = policyRepository.findAll();
+        for (Policy policy : policies) {
+            long upVoteCount = 0;
+            long downVoteCount = 0;
+
+            final List<Vote> votes = policy.getVotes();
+            for (Vote vote : votes) {
+                if (vote.getType().equals("up")) {
+                    upVoteCount++;
+                } else {
+                    downVoteCount++;
+                }
+            }
+
+            final User user = policy.getUser();
+            final Category category = policy.getCategory();
+            final PolicyResponseDto responseDto = new PolicyResponseDto(policy.getId(), policy.getTitle(), policy.getDescription(), policy.getDate(), upVoteCount, downVoteCount);
+            responseDto.setUser(new AuthResponseDto(user.getId(), user.getName()));
+            responseDto.setCategory(new CategoryResponseDto(category.getId(), category.getName()));
+
+            responseDtoList.add(responseDto);
+        }
+
+        return responseDtoList;
     }
 
     public PolicyResponseDto createPolicy(PolicyRequestDto payload) {
@@ -54,6 +81,7 @@ public class PolicyService {
     }
 
     public boolean upVotePolicy(PolicyVoteRequestDto payload) {
+
         return false;
     }
 
