@@ -1,19 +1,24 @@
 package com.svs.svs.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDate;
+
 public class PolicyResponseDto {
     private Long policyId;
     private CategoryResponseDto category;
     private AuthResponseDto user;
     private String title;
     private String description;
-    private String date;
+    @JsonFormat(pattern = "MM-dd-yyyy")
+    private LocalDate date;
     private Long upVoteCount;
     private Long downVoteCount;
 
     public PolicyResponseDto() {
     }
 
-    public PolicyResponseDto(Long policyId, String title, String description, String date, Long upVoteCount, Long downVoteCount) {
+    public PolicyResponseDto(Long policyId, String title, String description, LocalDate date, Long upVoteCount, Long downVoteCount) {
         this.policyId = policyId;
         this.title = title;
         this.description = description;
@@ -62,11 +67,11 @@ public class PolicyResponseDto {
         this.description = description;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
