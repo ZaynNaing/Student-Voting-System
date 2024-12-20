@@ -28,12 +28,12 @@ public class PolicyController {
     }
 
     @PostMapping("/up-vote")
-    public boolean upVotePolicy(@RequestBody PolicyVoteRequestDto payload) {
-        return policyService.upVotePolicy(payload);
+    public void upVotePolicy(@RequestBody PolicyVoteRequestDto payload) {
+        policyService.upVotePolicy(payload);
     }
 
     @PostMapping("/down-vote")
-    public boolean downVotePolicy(@RequestBody PolicyVoteRequestDto payload) {
-        return policyService.downVotePolicy(payload);
+    public void downVotePolicy(@RequestBody PolicyVoteRequestDto payload) {
+        policyService.downVotePolicy(payload);
     }
 }
