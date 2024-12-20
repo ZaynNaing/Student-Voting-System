@@ -1,13 +1,13 @@
 package com.svs.svs.dto;
 
-public class LoginResponseDto {
+public class AuthResponseDto {
     private Long userId;
     private String userName;
 
-    public LoginResponseDto() {
+    public AuthResponseDto() {
     }
 
-    public LoginResponseDto(Long userId, String userName) {
+    public AuthResponseDto(Long userId, String userName) {
         this.userId = userId;
         this.userName = userName;
     }

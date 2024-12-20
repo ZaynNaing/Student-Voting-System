@@ -1,7 +1,7 @@
 package com.svs.svs.exception;
 
-public class Exception404 extends RuntimeException {
-    public Exception404(String message) {
+public class Exception403 extends RuntimeException {
+    public Exception403(String message) {
         super(message);
     }
 }
