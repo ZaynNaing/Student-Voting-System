@@ -4,7 +4,6 @@ import com.svs.svs.exception.Exception401;
 import com.svs.svs.exception.Exception403;
 import com.svs.svs.exception.Exception404;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
