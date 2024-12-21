@@ -3,6 +3,7 @@ package com.svs.svs.dto;
 public class PolicyRequestDto {
     private String userId;
     private String categoryId;
+    private String categoryName;
     private String title;
     private String description;
 
@@ -39,5 +40,13 @@ public class PolicyRequestDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }

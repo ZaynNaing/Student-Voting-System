@@ -69,14 +69,20 @@ public class PolicyService {
             throw new Exception404("User not found with given userId.");
         }
 
-        final Optional<Category> optionalCategory = categoryRepository.findById(Long.valueOf(payload.getCategoryId()));
+        // final Optional<Category> optionalCategory = categoryRepository.findById(Long.valueOf(payload.getCategoryId()));
+        // if (optionalCategory.isEmpty()) {
+        //     throw new Exception404("Category not found with given categoryId.");
+        // }
+
+        final Optional<Category> optionalCategory = categoryRepository.findByName(payload.getCategoryName());
         if (optionalCategory.isEmpty()) {
-            throw new Exception404("Category not found with given categoryId.");
+        throw new Exception404("Category not found with given categoryId.");
         }
 
         final User user = optionalUser.get();
         final Category category = optionalCategory.get();
-        final Policy policyToSave = new Policy(payload.getTitle(), payload.getDescription(), LocalDate.now(), category, user);
+        final Policy policyToSave = new Policy(payload.getTitle(), payload.getDescription(), LocalDate.now(), category,
+                user);
         final Policy savedPolicy = policyRepository.save(policyToSave);
 
         final PolicyResponseDto responseDto = new PolicyResponseDto(savedPolicy.getId(), savedPolicy.getTitle(), savedPolicy.getDescription(), savedPolicy.getDate(), 0L, 0L);
